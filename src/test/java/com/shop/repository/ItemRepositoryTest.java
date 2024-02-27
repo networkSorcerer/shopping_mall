@@ -15,7 +15,6 @@ import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
 import java.time.LocalDateTime;
-import jakarta.persistence.PersistenceContext;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAQuery;
 import static org.junit.jupiter.api.Assertions.*;
