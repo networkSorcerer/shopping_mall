@@ -1,5 +1,6 @@
 package com.shop.controller;
 
+import lombok.With;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,10 @@ public class MemberControllerTest {
                         .user(email).password("12345"))
                 .andExpect(SecurityMockMvcResultMatchers.unauthenticated());
     }
+
+    @Test
+    @DisplayName("상품 등록 페이지 일반 회원 접근 테스트")
+    @WithMockUser(username = "user" , roles = "USER")
+    public
 
 }
