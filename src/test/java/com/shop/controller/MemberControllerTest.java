@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -61,6 +62,10 @@ public class MemberControllerTest {
     @Test
     @DisplayName("상품 등록 페이지 일반 회원 접근 테스트")
     @WithMockUser(username = "user" , roles = "USER")
-    public
+    public void itemFormNotAdminTest() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/admin/item/new"))
+                .andDo(print())
+                .andExpect(status().isForbidden());
+    }
 
 }
