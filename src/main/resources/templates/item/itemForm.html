@@ -3,6 +3,35 @@
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layouts/layout1}">
 
+<!--사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+  <script th:inline="javascript">
+    $(document).ready(function(){
+      var errorMessage = [[${errorMessage}]];
+      if(errorMessage 1= null) {
+      alert(errorMessage);
+      }
+
+      bindDomEvent();
+    });
+
+    function bindDomEvent(){
+      $(".custom-file-input").on("change",function(){
+        var fileName =$(this).val().split("\\").pop();
+        var fileExt = fileName.substring(fileName.lastIndexOf(".")+1);
+        //확장자 추출
+        fileExt = fileExt.toLowerCase();
+
+        if(fileExt != "jpg" && fileExt != "jpeg" && fileExt != "gif" && fileExt != "png" && fileExt != "bmp") {
+        alert("이미지 파일만 등록이 가능합니다");
+        return;
+        }
+        $(this).sibling(".custom-file-label").html(fileName);
+      });
+  }
+  </script>
+
+</th:block>
 <div layout:fragment="content">
   <h1>상품등록 페이지입니다</h1>
 </div>

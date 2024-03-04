@@ -11,4 +11,10 @@ public class ItemController {
     public String itemForm() {
         return "/item/itemForm";
     }
+
+    @GetMapping(value = "/admiin/item/new")
+    public String itemForm(Model model) {
+        model.addAttribute("itemFormDto", new ItemFormDto());
+        return "item/itemForm";
+    }
 }
